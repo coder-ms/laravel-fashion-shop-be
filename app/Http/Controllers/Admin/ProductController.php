@@ -2,29 +2,40 @@
 
 namespace App\Http\Controllers\Admin;
 
+use app\Http\Controllers\Admin;
+use App\Models\Categories;
+use App\Models\Textures;
+use App\Models\Brand;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
 
 class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+   
      */
     public function index()
     {
-        //
+       
+            $products = Product::all();
+        return view('admin.products.index', compact('products'));
+        // Se Utente(0 su is_Admin -> database), visualizziamo solo i propri post
+      
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+    
      */
     public function create()
     {
-        //
+        return view('admin.products.create');
+
     }
 
     /**
@@ -46,7 +57,8 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return view('admin.products.show', compact('product'));
+
     }
 
     /**
@@ -57,7 +69,8 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('admin.products.edit');
+
     }
 
     /**
