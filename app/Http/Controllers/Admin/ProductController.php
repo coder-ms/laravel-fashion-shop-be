@@ -10,6 +10,9 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreProductRequest;
+use App\Http\Requests\UpdateProductRequest;
+
 
 class ProductController extends Controller
 {
@@ -21,7 +24,7 @@ class ProductController extends Controller
     public function index()
     {
        
-            $products = Product::all();
+        $products = Product::all();
         return view('admin.products.index', compact('products'));
         // Se Utente(0 su is_Admin -> database), visualizziamo solo i propri post
       
@@ -42,16 +45,22 @@ class ProductController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * 
      */
-    public function store(Request $request)
+    public function store(StoreProductRequest $request)
     {
         $data = $request->all();
         $slug = Product::generateSlug($request->name);
         $data['slug'] = $slug;
         $newProduct = new Product();
         $newProduct->name = $data['name'];
-        
+        $newProduct->price = $data['price'];
+        $newProduct->descrption = $data['descrption'];
+        $newProduct->image_link = $data['image_link'];
+       
+        $newProduct = Product::create($data);
+        return redirect()->route('admin.products.show', $newProduct->id);
+
     }
 
     /**
@@ -85,9 +94,14 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(UpdateProductRequest $request, Product $product)
     {
-        //
+        $data = $request->validated();
+        $slug = Product::generateSlug($request->name);
+        $data['slug'] = $slug;
+        $product->update($data);
+
+        return redirect()->route('admin.products.index')->with('message', "$product->name updated successfully");
     }
 
     /**
@@ -98,6 +112,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        return redirect()->route('admin.products.index')->with('message', "$product->name deleted successfully");
     }
 }
