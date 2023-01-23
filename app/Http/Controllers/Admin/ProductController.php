@@ -46,7 +46,12 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $slug = Product::generateSlug($request->name);
+        $data['slug'] = $slug;
+        $newProduct = new Product();
+        $newProduct->name = $data['name'];
+        
     }
 
     /**
