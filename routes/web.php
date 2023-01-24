@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\TexturesController;
+use App\Http\Controllers\Admin\CategoriesController;
+use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
@@ -39,7 +41,8 @@ Route::middleware(['auth', 'verified'])
             ->name('dashboard');
         Route::resource('products', ProductController::class);
         Route::resource('textures', TexturesController::class);
-
+        Route::resource('categories', CategoriesController::class);
+        Route::resource('brands', BrandController::class);
 
     });
 

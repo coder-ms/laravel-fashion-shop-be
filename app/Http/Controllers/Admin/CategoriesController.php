@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Categories;
 use Illuminate\Http\Request;
 
+
 class CategoriesController extends Controller
 {
     /**
@@ -15,7 +16,8 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Categories::paginate(4);
+        return view('admin.categories.index', compact('categories'));
     }
 
     /**
@@ -25,7 +27,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.categories.create');
     }
 
     /**
@@ -36,7 +38,16 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+         $slug = Categories::generateSlug($request->name);
+        $data['slug'] = $slug;
+        
+
+        $newCategory = new Categories();
+        $newCategory->name = $data['name'];
+
+        $newCategory = Categories::create($data);
+        return redirect()->route('admin.categories.show', $newCategory->id);
     }
 
     /**
@@ -45,9 +56,9 @@ class CategoriesController extends Controller
      * @param  \App\Models\Categories  $categories
      * @return \Illuminate\Http\Response
      */
-    public function show(Categories $categories)
+    public function show(Categories $category)
     {
-        //
+        return view('admin.categories.show', compact('category'));
     }
 
     /**
@@ -56,9 +67,9 @@ class CategoriesController extends Controller
      * @param  \App\Models\Categories  $categories
      * @return \Illuminate\Http\Response
      */
-    public function edit(Categories $categories)
+    public function edit(Categories $category)
     {
-        //
+        return view('admin.categories.edit', compact('category'));
     }
 
     /**
@@ -68,9 +79,16 @@ class CategoriesController extends Controller
      * @param  \App\Models\Categories  $categories
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Categories $categories)
+    public function update(Request $request, Categories $category)
     {
-        //
+        $data = $request->all();
+      
+        
+        $slug = Categories::generateSlug($request->name);
+        $data['slug'] = $slug;
+        $category->update($data);
+
+        return redirect()->route('admin.categories.index')->with('message', "$category->name updated successfully");
     }
 
     /**
@@ -79,8 +97,9 @@ class CategoriesController extends Controller
      * @param  \App\Models\Categories  $categories
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Categories $categories)
+    public function destroy(Categories $category)
     {
-        //
+        $category->delete();
+        return redirect()->route('admin.categories.index')->with('message', "$category->name deleted successfully");
     }
 }
