@@ -12,6 +12,7 @@ use illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use Illuminate\Support\Facades\Storage;
 
 
 class ProductController extends Controller
@@ -36,7 +37,6 @@ class ProductController extends Controller
     public function create()
     {
         return view('admin.products.create');
-
     }
 
     /**
@@ -48,8 +48,14 @@ class ProductController extends Controller
     public function store(StoreProductRequest $request)
     {
         $data = $request->all();
+        $img_path = Storage::put('uploads', $data['image_link']);
         /*  $slug = Product::generateSlug($request->name);
         $data['slug'] = $slug; */
+        if($request->hasFile('image_link')){
+            $path = Storage::put('image_link', $request->image_link);
+            $data['image_link'] = $path;
+        }
+
         $newProduct = new Product();
         $newProduct->name = $data['name'];
         $newProduct->price = $data['price'];
@@ -95,8 +101,16 @@ class ProductController extends Controller
     public function update(UpdateProductRequest $request, Product $product)
     {
         $data = $request->validated();
-        $slug = Product::generateSlug($request->name);
-        $data['slug'] = $slug;
+        if ($request->hasFile('image_link')) {
+            if ($product->image_link) {
+                Storage::delete($product->image_link);
+            }
+            $path = Storage::put('image_link', $request->image_link);
+            $data['image_link'] = $path;
+        }
+        
+        // $slug = Product::generateSlug($request->name);
+        // $data['slug'] = $slug;
         $product->update($data);
 
         return redirect()->route('admin.products.index')->with('message', "$product->name updated successfully");
