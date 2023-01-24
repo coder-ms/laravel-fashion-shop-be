@@ -24,7 +24,7 @@ class ProductController extends Controller
     public function index()
     {
 
-        $products = Product::all();
+        $products = Product::paginate(4);
         return view('admin.products.index', compact('products'));
         // Se Utente(0 su is_Admin -> database), visualizziamo solo i propri post
 
