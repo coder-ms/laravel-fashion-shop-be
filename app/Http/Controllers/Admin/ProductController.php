@@ -17,10 +17,9 @@ use App\Http\Requests\UpdateProductRequest;
 class ProductController extends Controller
 {
     /**
-    * Display a listing of the resource.
-    *
-
-    */
+     * Display a listing of the resource.
+     *
+     */
     public function index()
     {
 
@@ -31,10 +30,9 @@ class ProductController extends Controller
     }
 
     /**
-    * Show the form for creating a new resource.
-    *
-
-    */
+     * Show the form for creating a new resource.
+     *
+     */
     public function create()
     {
         return view('admin.products.create');
@@ -50,12 +48,12 @@ class ProductController extends Controller
     public function store(StoreProductRequest $request)
     {
         $data = $request->all();
-        $slug = Product::generateSlug($request->name);
-        $data['slug'] = $slug;
+        /*  $slug = Product::generateSlug($request->name);
+        $data['slug'] = $slug; */
         $newProduct = new Product();
         $newProduct->name = $data['name'];
         $newProduct->price = $data['price'];
-        $newProduct->descrption = $data['descrption'];
+        $newProduct->description = $data['description'];
         $newProduct->image_link = $data['image_link'];
 
         $newProduct = Product::create($data);
