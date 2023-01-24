@@ -26,12 +26,12 @@
             @foreach($products as $product)
                 <tr>
                     <th scope="row">{{$product->id}}</th>
-                    <td>{{$product->name}}</td>
+                    <td><a href="{{route('admin.products.show', $product->id)}}" title="View Products">{{$product->name}}</a></td>
                     <td>{!! Str::limit($product->description,100) !!}</td>
-                    <td><i class="fa-solid fa-pen"></i></a></td>
+                    <td><a class="link-secondary" href="{{route('admin.products.edit', $product->id)}}" title="Edit Product"><i class="fa-solid fa-pen"></i></a></td>
+
                     <td> 
-                        <form  method="POST">
-                            {{-- added la routa --}}
+                        <form action="{{route('admin.products.destroy', $product->id)}}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="delete-button btn btn-danger ms-3" data-item-name="{{$product->name}}"><i class="fa-solid fa-trash-can"></i></button>
