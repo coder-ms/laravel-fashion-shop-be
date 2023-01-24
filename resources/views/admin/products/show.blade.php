@@ -21,7 +21,7 @@
                 {{-- @if ($product->category)
                     <p>Category: {{$product->category->name}}</p>
                 @endif --}}
-                <p>Tags: </p>
+                <p>Textures: </p>
                 @if ($product->textures && count($product->textures) > 0 )
                     <ul>
                         @foreach($product->textures as $texture)
