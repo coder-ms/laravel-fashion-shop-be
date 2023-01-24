@@ -5,7 +5,7 @@
     <div class="containerx">
         <div class="cardShow">
             <div class="cardImageShow">
-                12
+                
                 {{-- {{dd($product)}} --}}
                 
                 @if (str_contains($product->image_link,'image_link/') )

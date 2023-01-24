@@ -23,11 +23,11 @@
 
                   <div class="mb-3">
                     <label for="price" class="form-label">Price</label>
-                    <input type="text" class="form-control @error('price') is-invalid @enderror" id="price" name="price" required maxlength="100" minlength="3">
+                    <input type="number" class="form-control @error('price') is-invalid @enderror" id="price" name="price" required maxlength="100" minlength="1">
                     @error('price')
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
-                    <div class="form-text">* Minimo 3 caratteri e massimo 100 caratteri</div>
+                    <div class="form-text">* Minimo 1 caratteri e massimo 100 caratteri</div>
                   </div>
 
                   <div class="mb-3">
