@@ -32,15 +32,23 @@
                     <textarea class="form-control" id="description" name="description">"{{old('description', $product->description)}}</textarea>
                   </div>
 
-
                   <div class="mb-3">
+                    <label for="price" class="form-label">Price</label>
+                    <input type="number" class="form-control @error('price') is-invalid @enderror" id="price" name="price" required maxlength="100" minlength="1" value="{{old('price', $product->price)}}">
+                    @error('price')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                    {{-- <div class="form-text">* Minimo 1 caratteri e massimo 100 caratteri</div> --}}
+                  </div>
+
+                  {{-- <div class="mb-3">
                     <label for="price" class="form-label">Price</label>
                     <input type="text" class="form-control @error('price') is-invalid @enderror" id="price" name="price" required maxlength="100" minlength="3" value="{{old('price', $product->price)}}">
                     @error('price')
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                     <div class="form-text">* Minimo 3 caratteri e massimo 100 caratteri</div>
-                  </div>
+                  </div> --}}
 
                   {{-- <div class="mb-3">
                     <label for="category_id" class="form-label">Seleziona categoria di framework:</label>

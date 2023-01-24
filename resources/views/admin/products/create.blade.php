@@ -27,7 +27,7 @@
                     @error('price')
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
-                    <div class="form-text">* Minimo 1 caratteri e massimo 100 caratteri</div>
+                    {{-- <div class="form-text">* Minimo 1 caratteri e massimo 100 caratteri</div> --}}
                   </div>
 
                   <div class="mb-3">
