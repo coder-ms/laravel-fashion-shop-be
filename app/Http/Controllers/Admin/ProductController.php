@@ -17,24 +17,24 @@ use App\Http\Requests\UpdateProductRequest;
 class ProductController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-   
-     */
+    * Display a listing of the resource.
+    *
+
+    */
     public function index()
     {
-       
+
         $products = Product::all();
         return view('admin.products.index', compact('products'));
         // Se Utente(0 su is_Admin -> database), visualizziamo solo i propri post
-      
+
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-    
-     */
+    * Show the form for creating a new resource.
+    *
+
+    */
     public function create()
     {
         return view('admin.products.create');
@@ -45,7 +45,7 @@ class ProductController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * 
+     *
      */
     public function store(StoreProductRequest $request)
     {
@@ -57,7 +57,7 @@ class ProductController extends Controller
         $newProduct->price = $data['price'];
         $newProduct->descrption = $data['descrption'];
         $newProduct->image_link = $data['image_link'];
-       
+
         $newProduct = Product::create($data);
         return redirect()->route('admin.products.show', $newProduct->id);
 
