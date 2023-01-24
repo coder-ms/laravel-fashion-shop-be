@@ -1,7 +1,7 @@
 <nav id="sidebarMenu" class="bg-dark navbar-dark">
     <h2 class="p-2"> Fashion Shop</h2>
     <ul class="nav flex-column">
-        <li class="nav-item"> 
+        <li class="nav-item">
             <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.dashboard' ? 'bg-secondary' : '' }}" href="{{route('admin.dashboard')}}">
                 <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Dashboard
             </a>
@@ -22,7 +22,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-white" href="#">
+            <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.textures.index' ? 'bg-secondary' : '' }}" href="{{route('admin.textures.index')}}">
                 <i class="fa-solid fa-bookmark fa-lg fa-fw"></i> Texture
             </a>
         </li>
