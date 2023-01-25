@@ -10,6 +10,8 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ColorController;
 
 
+
+use App\Http\Controllers\Admin\TagController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -47,6 +49,7 @@ Route::middleware(['auth', 'verified'])
         
         Route::resource('colors', ColorController::class);
 
+        Route::resource('tags', TagController::class);
     });
 
 
