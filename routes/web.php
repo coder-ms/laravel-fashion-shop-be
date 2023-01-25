@@ -8,9 +8,16 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
 
+
+use App\Http\Controllers\Admin\TagController;
+
+
+
+
+
+
+
 use App\Http\Controllers\Admin\ShippingController;
-
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -47,7 +54,19 @@ Route::middleware(['auth', 'verified'])
         Route::resource('brands', BrandController::class);
 
 
+
+
+
+
+
+
+
+
+
+
+
         Route::resource('shippings', ShippingController::class);
+
 
     });
 
