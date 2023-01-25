@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ColorController;
 
 
 /*
@@ -43,6 +44,8 @@ Route::middleware(['auth', 'verified'])
         Route::resource('textures', TexturesController::class);
         Route::resource('categories', CategoriesController::class);
         Route::resource('brands', BrandController::class);
+        
+        Route::resource('colors', ColorController::class);
 
     });
 
