@@ -37,6 +37,13 @@ class Product extends Model
         return $this->belongsTo(Textures::class);
     }
 
+    public function shippings():BelongsToMany
+    {
+        return $this->belongsToMany(Shipping::class);
+    }
+
+
+
 //     public function tags(): BelongsToMany
 //     {
 //         return $this->belongsToMany(Tag::class);

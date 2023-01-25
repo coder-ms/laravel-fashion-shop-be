@@ -83,7 +83,7 @@ class ProductController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
+     * 
      */
     public function edit(Product $product)
     {
@@ -108,7 +108,7 @@ class ProductController extends Controller
             $path = Storage::put('image_link', $request->image_link);
             $data['image_link'] = $path;
         }
-        
+
         // $slug = Product::generateSlug($request->name);
         // $data['slug'] = $slug;
         $product->update($data);

@@ -62,9 +62,6 @@
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                   </div> --}}
-
-
-
                   <div class="d-flex">
                     <div class="media me-4">
                         <img class="shadow" width="150" src="{{asset('storage/' . $product->image_link)}}" alt="{{$product->name}}">
