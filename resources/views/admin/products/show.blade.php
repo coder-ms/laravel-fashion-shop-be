@@ -8,11 +8,15 @@
 
                 {{-- {{dd($product)}} --}}
 
-                @if (str_contains($product->image_link,'image_link/') )
-                <img src="{{asset('storage/' . $product->image_link)}}" alt="">
-            @else
-                <img src="{{$product->image_link}}" alt="">
-            @endif
+           
+
+            <div class="image">
+                @if($product->image_link)
+                <img src="{{ asset('storage/' . $product->image_link) }}">
+                @else
+                
+                @endif
+            </div>
 
 
             </div>
