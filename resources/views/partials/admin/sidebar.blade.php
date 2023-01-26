@@ -26,5 +26,20 @@
                 <i class="fa-solid fa-bookmark fa-lg fa-fw"></i> Texture
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.tags.index' ? 'bg-secondary' : '' }}" href="{{route('admin.tags.index')}}">
+                <i class="fa-solid fa-bookmark fa-lg fa-fw"></i> Tags
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.colors.index' ? 'bg-secondary' : '' }}" href="{{route('admin.colors.index')}}">
+                <i class="fa-solid fa-bookmark fa-lg fa-fw"></i> Colors
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.shippings.index' ? 'bg-secondary' : '' }}" href="{{route('admin.shippings.index')}}">
+                <i class="fa-solid fa-bookmark fa-lg fa-fw"></i> Shippings
+            </a>
+        </li>
     </ul>
 </nav>
