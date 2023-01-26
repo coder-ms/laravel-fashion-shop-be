@@ -32,16 +32,27 @@
                     <td><a href="{{route('admin.products.show', $product->id)}}" title="View Products">{{$product->name}}</a></td>
                     <td>{{$product->price}}</td>
                     <td>
-                      
-                        {{$product->texture->name}}
+                      @if($product->texture)
+                      {{$product->texture->name}}
+                      @else
+                      not found
+                      @endif
                     </td>
                     <td>
-                      
+                        @if($product->brand)
                         {{$product->brand->name}}
+                        @else
+                        not found
+                        @endif
+                        
                     </td>
                     <td>
-                      
+                        @if($product->category)
                         {{$product->category->name}}
+                        @else
+                        not found
+                        @endif
+                       
                     </td>
                     <td><a class="link-secondary" href="{{route('admin.products.edit', $product->id)}}" title="Edit Product"><i class="fa-solid fa-pen"></i></a></td>
                     <td> 
