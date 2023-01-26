@@ -51,7 +51,7 @@ Route::middleware(['auth', 'verified'])
         Route::resource('products', ProductController::class);
         Route::resource('textures', TexturesController::class);
         Route::resource('categories', CategoriesController::class);
-        Route::resource('brands', BrandController::class);
+        Route::resource('brands', BrandController::class)->parameters(['brands' => 'brand:id']);
 
 
         Route::resource('tags', TagController::class);

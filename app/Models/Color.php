@@ -14,7 +14,7 @@ class Color extends Model
     {
         return Str::slug($name, '-');
     }
-    public function colors(){
+    public function products(){
         return $this->belongsToMany(Product::class);
     }
 }

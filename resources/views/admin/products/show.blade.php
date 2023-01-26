@@ -25,14 +25,23 @@
                 {{-- @if ($product->category)
                     <p>Category: {{$product->category->name}}</p>
                 @endif --}}
-                <p>Textures: </p>
-                @if ($product->textures && count($product->textures) > 0 )
+               
+             
                     <ul>
-                        @foreach($product->textures as $texture)
-                            <li>{{$texture->name}}</li>
-                        @endforeach
+                        <li>
+                            texture:
+                            {{$product->texture->name}}
+                        </li>
+                        <li>
+                          brand:
+                            {{$product->brand->name}}
+                        </li>
+                            <li>
+                                category:
+                                {{$product->category->name}}</li>
+                      
                     </ul>
-                @endif
+               
                 {{-- <a href="{{route('admin.products.index', $product->slug)}}" class="btn btn-primary">INDIETRO</a>
                 <a href="{{route('admin.products.edit', $product->slug)}}" class="btn btn-secondary">MODIFICA</a>
                 <form action="{{route('admin.products.destroy', $product->slug)}}" method="POST" class=" d-inline">

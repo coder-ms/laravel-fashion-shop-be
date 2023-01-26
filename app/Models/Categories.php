@@ -15,7 +15,7 @@ class Categories extends Model
         return Str::slug($name, '-');
 
     }
-    public function categories():HasMany
+    public function products():HasMany
     {
         return $this->hasMany(Categories::class);
     }

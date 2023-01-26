@@ -16,7 +16,10 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Name</th>
-                <th scope="col">Description</th>
+                <th  scope="col">Price</th>
+                <th  scope="col">Texture</th>
+                <th  scope="col">Brand</th>
+                <th  scope="col">Category</th>
                 <th scope="col">Edit</th>
                 <th scope="col">Delete</th>
             </tr>
@@ -27,9 +30,20 @@
                 <tr>
                     <th scope="row">{{$product->id}}</th>
                     <td><a href="{{route('admin.products.show', $product->id)}}" title="View Products">{{$product->name}}</a></td>
-                    <td>{!! Str::limit($product->description,100) !!}</td>
+                    <td>{{$product->price}}</td>
+                    <td>
+                      
+                        {{$product->texture->name}}
+                    </td>
+                    <td>
+                      
+                        {{$product->brand->name}}
+                    </td>
+                    <td>
+                      
+                        {{$product->category->name}}
+                    </td>
                     <td><a class="link-secondary" href="{{route('admin.products.edit', $product->id)}}" title="Edit Product"><i class="fa-solid fa-pen"></i></a></td>
-
                     <td> 
                         <form action="{{route('admin.products.destroy', $product->id)}}" method="POST">
                         @csrf

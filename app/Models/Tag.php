@@ -13,7 +13,7 @@ class Tag extends Model
 
     protected $guarded = [];
 
-    public function tags(){
+    public function products(){
         return $this->belogsToMany(Product::class);
     }
 

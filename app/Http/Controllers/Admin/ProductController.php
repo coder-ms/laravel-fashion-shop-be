@@ -15,6 +15,7 @@ use App\Http\Requests\UpdateProductRequest;
 use Illuminate\Support\Facades\Storage;
 
 
+
 class ProductController extends Controller
 {
     /**
@@ -23,8 +24,18 @@ class ProductController extends Controller
      */
     public function index()
     {
-
+        // $product->brand_name = "Not found";
+        // $brand = Brand::all();
+        // for ($i = 0; $i < count($brand); $i++) {
+        //     if ($brand[$i]->id == $product->brand_id) {
+        //         $product->brand_name = $brand[$i]->name;
+        //         break;
+        //     }
+        // }
+   
+        
         $products = Product::paginate(4);
+  
         return view('admin.products.index', compact('products'));
         // Se Utente(0 su is_Admin -> database), visualizziamo solo i propri post
 

@@ -22,17 +22,17 @@ class Product extends Model
     {
         return $this->belongsTo(User::class);
     }
-    public function categories(): BelongsTo
+    public function category(): BelongsTo
     {
         return $this->belongsTo(Categories::class);
     }
 
-    public function brands(): BelongsTo
+    public function brand(): BelongsTo
     {
         return $this->belongsTo(Brand::class);
     }
 
-    public function textures(): BelongsTo
+    public function texture(): BelongsTo
     {
         return $this->belongsTo(Textures::class);
     }

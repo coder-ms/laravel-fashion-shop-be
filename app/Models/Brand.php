@@ -11,12 +11,12 @@ class Brand extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'slug'];
+    protected $guarded = [];
     public static function generateSlug($name){
         return Str::slug($name, '-');
 
     }
-    public function brands():HasMany
+    public function products():HasMany
     {
         return $this->hasMany(Brand::class);
     }
