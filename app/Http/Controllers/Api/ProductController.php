@@ -10,14 +10,14 @@ use App\Models\Product;
 class ProductController extends Controller
 {
    public function index(){
-        $products = Product::with('textures','categories', 'brands')->paginate(4);
+        $products = Product::with('texture','category', 'brand')->paginate(4);
             return response()->json([
                 'success' => true,
                 'results' => $products
             ]);
         }
         public function show($id){
-            $products = Product::with('textures','categories', 'brands')->where('id', $id)->first();
+            $products = Product::with('texture','category', 'brand')->where('id', $id)->first();
             if($products){
                 return response()->json([
                     'success' => true,
