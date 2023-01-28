@@ -45,9 +45,12 @@ class ProductController extends Controller
      * Show the form for creating a new resource.
      *
      */
-    public function create()
+    public function create(Product $product)
     {
-        return view('admin.products.create');
+        $textures = Textures::all();
+        $brands = Brand::all();
+        $categories = Categories::all();
+        return view('admin.products.create', compact('product','textures','brands','categories'));
     }
 
     /**

@@ -38,7 +38,47 @@
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                   </div>
-
+                  <div class="mb-3">
+                    <label for="texture_id" class="form-label text-capitalize">Seleziona tipo <span>*</span></label>
+                    <select name="texture_id" id="texture_id" class="form-control @error('texture_id') is-invalid @enderror text-capitalize" required>
+                        <option value="">Seleziona texture</option>
+                        @foreach ($textures as $texture)
+                            <option value="{{ $texture->id }}" {{ $texture->id == old('texture_id') ? 'selected' : '' }} class="text-capitalize">
+                                {{ $texture->name }}</option>
+                        @endforeach
+                    </select>
+                    @error('texture_id')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+                {{-- Categoria Prodotto (es. Powder, Liquid....) --}}
+                <div class="mb-3">
+                    <label for="brand_id" class="form-label text-capitalize">Seleziona categoria <span>*</span></label>
+                    <select name="category_id" id="category_id" class="form-control @error('category_id') is-invalid @enderror text-capitalize" required>
+                        <option value="">Seleziona categoria</option>
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->id }}" {{ $category->id == old('category_id') ? 'selected' : '' }} class="text-capitalize">
+                                {{ $category->name }}</option>
+                        @endforeach
+                    </select>
+                    @error('category_id')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+                {{-- Brand Prodotto --}}
+                <div class="mb-3">
+                    <label for="brand_id" class="form-label text-capitalize">Seleziona Brand <span>*</span></label>
+                    <select name="brand_id" id="brand_id" class="form-control @error('brand_id') is-invalid @enderror text-capitalize" required>
+                        <option value="">Seleziona Brand</option>
+                        @foreach ($brands as $brand)
+                            <option value="{{ $brand->id }}" {{ $brand->id == old('brand_id') ? 'selected' : '' }} class="text-capitalize">
+                                {{ $brand->name }}</option>
+                        @endforeach
+                    </select>
+                    @error('brand_id')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
                  {{--  <div class="mb-3">
                     <label for="type_id" class="form-label">Seleziona tipo</label>
                     <select name="type_id" id="type_id" class="form-control @error('type_id') is-invalid @enderror">
