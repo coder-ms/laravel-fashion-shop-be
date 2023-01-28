@@ -12,7 +12,7 @@ class Product extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'slug', 'price', 'description', 'image_link'];
+    protected $fillable = ['name', 'slug', 'price', 'description', 'image_link','category_id','texture_id','brand_id'];
 
     public static function generateSlug($name){
         return Str::slug($name, '-');
